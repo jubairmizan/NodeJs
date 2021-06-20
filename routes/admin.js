@@ -7,7 +7,8 @@ const products = []; // Assign empty array for store product information we inpu
 
 // Assign add-product routes with get method
 router.get('/add-product',(req,res,next) => {
-    res.sendFile(path.join(rootDir,'views','add-product.html')); // sending add-product.html file which stored in views folder
+    // res.sendFile(path.join(rootDir,'views','add-product.html')); // sending add-product.html file which stored in views folder
+    res.render('add-product',{pageTitle:'Add Product'});// Render Add Product with sending data from routes page from View Page
 });
 
 // Assign add-product routes with view method
