@@ -25,7 +25,7 @@ app.use(shop);
 
 // If above routes are not called than called this routes.
 app.use((req,res,next) => {
-    res.status(404).sendFile(path.join(__dirname,'views','404.html'));
+    res.status(404).render('404');
 });
 
 // Node server port assign 
