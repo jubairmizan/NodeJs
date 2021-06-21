@@ -1,7 +1,7 @@
 const express = require('express'); // import express js library
 const path = require('path'); // import nodejs path for assign view file
 const bodyParser = require('body-parser'); // import bodyParser for getting input data on terminal
-const admin = require('./routes/admin'); // import admin routes file
+const adminRoutes = require('./routes/admin'); // import admin routes file
 const shop = require('./routes/shop'); // import shop/website routes file
 
 // Express Js Starting
@@ -18,7 +18,7 @@ app.use(bodyParser.urlencoded({extended:false}));
 app.use(express.static(path.join(__dirname,'public')));
 
 // Admin Routes called with /admin middleware
-app.use('/admin',admin.routes);
+app.use('/admin',adminRoutes);
 
 // Website/Shop page routes called
 app.use(shop);
