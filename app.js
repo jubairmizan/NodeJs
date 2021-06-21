@@ -3,6 +3,7 @@ const path = require('path'); // import nodejs path for assign view file
 const bodyParser = require('body-parser'); // import bodyParser for getting input data on terminal
 const adminRoutes = require('./routes/admin'); // import admin routes file
 const shop = require('./routes/shop'); // import shop/website routes file
+const OtherController = require('./controllers/OtherController');
 
 // Express Js Starting
 const app = express();
@@ -24,9 +25,7 @@ app.use('/admin',adminRoutes);
 app.use(shop);
 
 // If above routes are not called than called this routes.
-app.use((req,res,next) => {
-    res.status(404).render('404');
-});
+app.use(OtherController.notFound);
 
 // Node server port assign 
 app.listen(3000);
