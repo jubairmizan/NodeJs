@@ -1,4 +1,4 @@
-const products = []; // Assign empty array for store product information we input on browser
+const ProductModel = require('../models/ProductModel');
 
 exports.addProduct = (req,res,next) => {
     // res.sendFile(path.join(rootDir,'views','add-product.html')); // sending add-product.html file which stored in views folder
@@ -6,11 +6,13 @@ exports.addProduct = (req,res,next) => {
 };
 
 exports.saveProduct = (req,res,next) => {
-    products.push({title:req.body.title}); // Push input title with products array for displaying in shop/home page
-
+    const product = new ProductModel(req.body.title); 
+    product.save();
     res.redirect('/'); // Redirect to shop/home page while user submit their input
 };
 
 exports.productList = (req,res,next) => {
-    res.render('shop',{productInfo:products,pageTitle:'Home Page',path: "/"}); // Render shop.pug with sending data from routes page from shop.pug page
+    const productList = ProductModel.list();
+    
+    res.render('shop',{productInfo:productList,pageTitle:'Home Page',path: "/"}); // Render shop.pug with sending data from routes page from shop.pug page
 };
