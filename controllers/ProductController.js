@@ -12,7 +12,14 @@ exports.saveProduct = (req,res,next) => {
 };
 
 exports.productList = (req,res,next) => {
-    const productList = ProductModel.list();
-    
-    res.render('shop',{productInfo:productList,pageTitle:'Home Page',path: "/"}); // Render shop.pug with sending data from routes page from shop.pug page
+    ProductModel.list((productList) => {
+        res.render(
+                    'shop',
+                    {
+                        productInfo:productList,
+                        pageTitle:'Home Page',
+                        path: "/"
+                    }
+        ); // Render shop.pug with sending data from routes page from shop.pug page
+    });
 };
