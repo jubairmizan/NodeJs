@@ -9,7 +9,7 @@ const OtherController = require('./controllers/OtherController');
 const app = express();
 
 // PUG library template engine setup for views engine extension
-app.set('view engine','pug');
+app.set('view engine','ejs');
 // PUG library template engine views folder assigned default is views folder we have to call that if we called views folder with another name
 app.set('views','views');
 

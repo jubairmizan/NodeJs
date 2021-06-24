@@ -2,7 +2,7 @@ const products = []; // Assign empty array for store product information we inpu
 
 exports.addProduct = (req,res,next) => {
     // res.sendFile(path.join(rootDir,'views','add-product.html')); // sending add-product.html file which stored in views folder
-    res.render('add-product',{pageTitle:'Add Product'});// Render Add Product with sending data from routes page from View Page
+    res.render('add-product',{pageTitle:'Add Product',path: "/admin/add-product"});// Render Add Product with sending data from routes page from View Page
 };
 
 exports.saveProduct = (req,res,next) => {
@@ -12,5 +12,5 @@ exports.saveProduct = (req,res,next) => {
 };
 
 exports.productList = (req,res,next) => {
-    res.render('shop',{productInfo:products,pageTitle:'Home Page'}); // Render shop.pug with sending data from routes page from shop.pug page
+    res.render('shop',{productInfo:products,pageTitle:'Home Page',path: "/"}); // Render shop.pug with sending data from routes page from shop.pug page
 };
