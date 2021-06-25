@@ -2,7 +2,7 @@ const ProductModel = require('../models/ProductModel');
 
 exports.addProduct = (req,res,next) => {
     // res.sendFile(path.join(rootDir,'views','add-product.html')); // sending add-product.html file which stored in views folder
-    res.render('add-product',{pageTitle:'Add Product',path: "/admin/add-product"});// Render Add Product with sending data from routes page from View Page
+    res.render('admin/add-product',{pageTitle:'Add Product',path: "/admin/add-product"});// Render Add Product with sending data from routes page from View Page
 };
 
 exports.saveProduct = (req,res,next) => {
@@ -14,7 +14,7 @@ exports.saveProduct = (req,res,next) => {
 exports.productList = (req,res,next) => {
     ProductModel.list((productList) => {
         res.render(
-                    'shop',
+                    'shop/product-list',
                     {
                         productInfo:productList,
                         pageTitle:'Home Page',

@@ -4,7 +4,6 @@ const products = [];
 const fileDetails = path.join(path.dirname(process.mainModule.filename),'data-log','products.json');
 
 const productListFromFile = (callback) => {
-    
     fs.readFile(fileDetails,(err,data) => {
         if(err){
             return callback([]);
@@ -15,8 +14,12 @@ const productListFromFile = (callback) => {
 }
 
 module.exports = class ProductModel{
-    constructor(title){
-        this.title = title;
+    constructor(title,price,desc,img_url){
+        this.productId  = Math.floor(Math.random() * 10000) + 1; 
+        this.title      = title;
+        this.price      = price;
+        this.desc       = desc; 
+        this.img_url    = img_url;
     }
     save(){
         productListFromFile(products => {

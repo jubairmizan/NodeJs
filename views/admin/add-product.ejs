@@ -1,0 +1,44 @@
+<%- include('../layout/head.ejs') %>
+    <!-- <link rel="stylesheet" href="/css/forms.css"> -->
+    <!-- <link rel="stylesheet" href="/css/product.css"> -->
+</head>
+
+<body>
+   <%- include('../layout/navigation.ejs') %>
+
+    <div class="container">
+        <!-- <form>
+            <div class="form-control">
+                <label for="title">Title</label>
+                <input type="text" name="title" id="title" class="form-control">
+            </div>
+            <div class="form-control">
+                <button class="btn btn-info" type="submit">Add Product</button>
+            </div>
+        </form> -->
+        <form class="product-form" action="/admin/add-product" method="POST">
+            <div class="form-group">
+              <label for="Title">Title</label>
+              <input type="text" name="title" id="title" class="form-control" aria-describedby="title-product" placeholder="Enter Product Title">
+              <small id="title-product" class="form-text text-muted">Product Title </small>
+            </div>
+            <div class="form-group">
+                <label for="ImageUrl">Image Url</label>
+                <input type="text" name="img_url" id="ImageUrl" class="form-control" aria-describedby="ImageUrl-product" placeholder="Enter Product Image Url">
+                <small id="ImageUrl-product" class="form-text text-muted">Product Image Url </small>
+            </div>
+            <div class="form-group">
+                <label for="price">Price</label>
+                <input type="text" name="price" id="price" class="form-control" aria-describedby="price-product" placeholder="Enter Product price">
+                <small id="price-product" class="form-text text-muted">Product Price </small>
+            </div>
+            <div class="form-group">
+                <label for="desc">Description</label>
+                <textarea name="desc" class="form-control"></textarea>
+                <small id="ImageUrl-product" class="form-text text-muted">Product Description </small>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+    </div>
+<%- include('../layout/end.ejs') %>

@@ -1,0 +1,47 @@
+<%- include('../layout/head.ejs') %>
+</head>
+
+<body>
+    <%- include('../layout/navigation.ejs') %>
+    <div class="container">
+        <h1 class="text-center">Products List</h1>
+        
+        <table class="table table-hover table-bordered">
+            <thead>
+                <tr>
+                    <th>SL</th>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Image</th>
+                    <th>Desc</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% 
+                let sl = 1;
+                if(productInfo.length > 0){ 
+                    for (let productList of productInfo){
+                %>
+                        <tr>
+                            <td><%= sl %></td>
+                            <td><%= productList.title %></td>
+                            <td><%= productList.price %></td>
+                            <td><img src="<%= productList.img_url %>" style="width:50px" alt="<%= productList.title %>" class="img-responsive"></td>
+                            <td><%= productList.desc %></td>
+                            <td>
+                                <a href="/admin/product/edit/<%= productList.productId %>" class="btn btn-info" style="float:left;">Edit</a>
+                                <form action="/admin/product/delete/<%= productList.productId %>" method="POST">
+                                    <button type="submit" class="btn btn-danger" style="margin-left:10px;">Delete</button>
+                                </form>
+                            </td>
+                        </tr>
+                <%
+                        sl++;
+                    }
+                }
+                %>
+            </tbody>
+        </table>
+    </div>
+<%- include('../layout/end.ejs') %>
