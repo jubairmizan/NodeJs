@@ -64,3 +64,17 @@ exports.checkout = (req,res,next) => {
         ); // Render shop.pug with sending data from routes page from shop.pug page
     });
 };
+
+exports.productDetails = (req,res,next) => {
+    const productId = req.params.productId;
+    ProductModel.productDetails(productId,product => {
+        res.render(
+                    'shop/product-detail',
+                    {
+                        productInfo : product,
+                        pageTitle : product.title,
+                        path: "/products"
+                    }
+        );
+    });
+};

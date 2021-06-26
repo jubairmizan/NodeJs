@@ -32,4 +32,12 @@ module.exports = class ProductModel{
     static list(callback){
         productListFromFile(callback);
     }
+    static productDetails(id,callback){
+        productListFromFile(products => {
+            const product = products.find(p => {
+                return p.productId == id;
+            });
+            callback(product);
+        });
+    }
 }
