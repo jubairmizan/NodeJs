@@ -4,6 +4,7 @@ const bodyParser = require('body-parser'); // import bodyParser for getting inpu
 const adminRoutes = require('./routes/admin'); // import admin routes file
 const shop = require('./routes/shop'); // import shop/website routes file
 const OtherController = require('./controllers/OtherController');
+const sequelize = require('./library/database');
 
 // Express Js Starting
 const app = express();
@@ -27,5 +28,11 @@ app.use(shop);
 // If above routes are not called than called this routes.
 app.use(OtherController.notFound);
 
-// Node server port assign 
-app.listen(3000);
+sequelize.sync().then(result => {
+    // console.log(result);
+    
+    // Node server port assign 
+    app.listen(3000);
+}).catch(err => {
+    console.log(err);
+});
